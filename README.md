@@ -11,6 +11,9 @@ This is a project for taking animal vocalization audio recordings, and learning 
 
 ![description](src_img/animalvocalizationfigure.png)
 
+![description](src_img/bengalesefinchInterp.png)
+![description](src_img/cassinsInterp.png)
+
 
 Documentation
 ------------
