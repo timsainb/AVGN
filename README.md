@@ -8,10 +8,12 @@ This is a project for taking animal vocalization audio recordings, and learning 
 
 ---
 
-
+### Overview of the package
 ![description](src_img/animalvocalizationfigure.png)
 
+#### an example inteprolation of Bengalese finch song
 ![description](src_img/bengalesefinchInterp.png)
+#### an example interpolation of Cassin's vireo song
 ![description](src_img/cassinsInterp.png)
 
 
