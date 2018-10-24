@@ -31,9 +31,13 @@ ExecuteTime:
 Below is an example of a combination of the HDBSCAN and UMAP algorithms, first used to reduce the dimensionality of syllables, then used to cluster syllables into discrete categories.
 
 ![description](src_img/distribution_and_seqs.png)
+
 <p style='text-align:center;font-style:italic'>(left) Distribution of syllables in UMAP dimensionality reduction, labelled using HDBSCAN. Each dot is a syllable from the same finch. (right) The same plot as to the left, replacing syllables with line segments connecting syllables, representing syllable transitions.</p>
+
 ![description](src_img/bf_seqs.png)
+
 <p style='text-align:center;font-style:italic'>The entire sequence dataset from Katahira et al., for the same Bengalese finch as above.Each vertical bar represents one song, and each color represents one syllable.</p>
+
 ![description](src_img/transcribed_sylls.png)
 <p style='text-align:center;font-style:italic'>(top) Syllabic transcriptions of the same bird. (bottom) the same syllables, segmented, normalized, and padded.</p>
 
