@@ -11,10 +11,31 @@ This is a project for taking animal vocalization audio recordings, and learning 
 ### Overview of the package
 ![description](src_img/animalvocalizationfigure.png)
 
-#### an example interpolation of Bengalese finch song
+### Latent space generative modelling of song
+Below is an example of a variational autoencoder trained on birdsong. In each example, points are selected from a low dimensional latent space, and are then passed through a decoder to be decoded into syllable spectrograms. We show in other notebook examples how to invert these spectrograms into waveforms (currently using Griffin and Lim inversion).
+
+#### an example grid sampling from Bengalese Finch song (from a 2D Multidimensional Scaling Autoencoder)
+![description](src_img/BF-latent-space.png)
+#### an example interpolation of Bengalese finch song (from a 16D Variational Autoencoder)
 ![description](src_img/bengalesefinchInterp.png)
-#### an example interpolation of Cassin's vireo song
+#### an example interpolation of Cassin's vireo song (from a 16D Variational Autoencoder)
 ![description](src_img/cassinsInterp.png)
+
+---
+ExecuteTime:
+  end_time: '2018-10-23T23:41:44.698952Z'
+  start_time: '2018-10-23T23:41:44.318716Z'
+...
+
+### An example of transcribed Bengalese Finch song
+Below is an example of a combination of the HDBSCAN and UMAP algorithms, first used to reduce the dimensionality of syllables, then used to cluster syllables into discrete categories.
+
+![description](src_img/distribution_and_seqs.png)
+<p style='text-align:center;font-style:italic'>(left) Distribution of syllables in UMAP dimensionality reduction, labelled using HDBSCAN. Each dot is a syllable from the same finch. (right) The same plot as to the left, replacing syllables with line segments connecting syllables, representing syllable transitions.</p>
+![description](src_img/bf_seqs.png)
+<p style='text-align:center;font-style:italic'>The entire sequence dataset from Katahira et al., for the same Bengalese finch as above.Each vertical bar represents one song, and each color represents one syllable.</p>
+![description](src_img/transcribed_sylls.png)
+<p style='text-align:center;font-style:italic'>(top) Syllabic transcriptions of the same bird. (bottom) the same syllables, segmented, normalized, and padded.</p>
 
 
 Documentation
