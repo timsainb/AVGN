@@ -22,10 +22,7 @@ Below is an example of a variational autoencoder trained on birdsong. In each ex
 ![description](src_img/cassinsInterp.png)
 
 ---
-ExecuteTime:
-  end_time: '2018-10-23T23:41:44.698952Z'
-  start_time: '2018-10-23T23:41:44.318716Z'
-...
+
 
 ### An example of transcribed Bengalese Finch song
 Below is an example of a combination of the HDBSCAN and UMAP algorithms, first used to reduce the dimensionality of syllables, then used to cluster syllables into discrete categories.
@@ -36,7 +33,7 @@ Below is an example of a combination of the HDBSCAN and UMAP algorithms, first u
 
 ![description](src_img/bf_seqs.png)
 
-<p style='text-align:center;font-style:italic'>The entire sequence dataset from Katahira et al., for the same Bengalese finch as above.Each vertical bar represents one song, and each color represents one syllable.</p>
+<p style='text-align:center;font-style:italic'>The entire sequence dataset from Katahira et al., for the same Bengalese finch as above. Each vertical bar represents one song, and each color represents one syllable.</p>
 
 ![description](src_img/transcribed_sylls.png)
 <p style='text-align:center;font-style:italic'>(top) Syllabic transcriptions of the same bird. (bottom) the same syllables, segmented, normalized, and padded.</p>
@@ -44,11 +41,13 @@ Below is an example of a combination of the HDBSCAN and UMAP algorithms, first u
 
 Documentation
 ------------
-Examples of of different songbirds are located in the 'notebooks/birdsong' folder. There is no explicit documentation, but we will work on adding better docstrings to different functions (as we clean them up), and adding more notes to the example notebooks.
+Examples of of different songbirds are located in the `notebooks/birdsong` folder. There is no explicit documentation, but we will work on adding better docstrings to different functions (as we clean them up), and adding more notes to the example notebooks.
 
 Currently there are two example birds - **Cassins vireo**, and **Bengalese finch**. The Cassin's vireo example dataset compares hand labelled syllables to syllable labels learned using out method, and thus uses the same segmentations as the manual method. The Bengalese finch is segmented automatically. I'm currently working on adding a few more species (both songbirds and other species).
 
-To use these notebooks on your own dataset, clone this repo and copy the methods from one of the examples. You will need to change the parameters as well as parse date/time information in .
+To use these notebooks on your own dataset, clone this repo and copy the methods from one of the examples. You will need to change the parameters as well as parse date/time information in `1.0-segment-song-from-wavs.ipynb` yourself. 
+
+The GAIA autoencoder is not currently implemented in AVGN. I have a [GAIA specific repo](https://github.com/timsainb/GAIA) with that implementation, that will probably need some adjustments to work with AVGN. Feel free to try to pull them together and make a PR. 
 
 *Some of these functions use a lot of RAM (for example loading your whole dataset into RAM). If RAM is an issue for you, try using the data_interator from https://github.com/timsainb/GAIA*
 
