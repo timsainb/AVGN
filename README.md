@@ -4,6 +4,8 @@ Animal Vocalization Generative Network (AVGN)
 
 Tim Sainburg (PhD student, UCSD, Gentner Laboratory)
 
+**This project is a work in progress, some features are not yet completed.**
+
 This is a project for taking animal vocalization audio recordings, and learning a generative model of segments of those vocalizations (e.g. syllables) using modern machine learning techniques. Specifically. This package will take in a dataset of wav files, segment them into units (e.g. syllables of birdsong) and train a generative model on those segments. The learned latent representations can be used to cluster syllables in an unsupervised manner, generate novel syllables, visualize sequences, or perform several other analyses.
 
 ---
