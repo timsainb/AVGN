@@ -47,8 +47,8 @@ class conv_net():
         ]
 
         self.decoder = [
-            tf.keras.layers.Dense(units=7 * 7 * 32, activation="relu"),
-            tf.keras.layers.Reshape(target_shape=(7, 7, 32)),
+            tf.keras.layers.Dense(units=7 * 7 * 64, activation="relu"),
+            tf.keras.layers.Reshape(target_shape=(7, 7, 64)),
             tf.keras.layers.Conv2DTranspose(
                 filters=64, kernel_size=3, strides=(2, 2), padding="SAME", activation="relu"
             ),

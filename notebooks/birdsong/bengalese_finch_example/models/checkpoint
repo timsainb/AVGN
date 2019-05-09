@@ -1,0 +1,2 @@
+model_checkpoint_path: "nsynth-tanh-full-dataset.h5py"
+all_model_checkpoint_paths: "nsynth-tanh-full-dataset.h5py"
