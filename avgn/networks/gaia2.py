@@ -4,7 +4,6 @@ import tensorflow as tf
 from tensorflow.keras import Model
 from tensorflow_probability.python.distributions import Chi2
 
-
 class GAIA(tf.keras.Model):
     """a basic vae class for tensorflow
     
@@ -24,7 +23,7 @@ class GAIA(tf.keras.Model):
 
         inputs, outputs = self.unet_function()
         self.disc = Model(inputs=[inputs], outputs=[outputs])
-        self.chsq = Chi2(df=self.batch_size)
+        self.chsq = Chi2(df=1/self.batch_size)
 
     def encode(self, x):
         return self.enc(x)
@@ -55,27 +54,20 @@ class GAIA(tf.keras.Model):
         z, xg, zi, xi, d_xi, d_x, d_xg = self.network_pass(x)
 
         # compute losses
-        d_x_loss = self.regularization(x, d_x)
+        xg_loss = self.regularization(x, xg)
         d_xg_loss = self.regularization(x, d_xg)
         d_xi_loss = self.regularization(xi, d_xi)
+        d_x_loss = self.regularization(x, d_x)
 
-        # balance learning rates
-        D_prop = sigmoid(d_x_loss - d_xi_loss, mult=20)
-        
-        # G_prop = tf.constant(1.0) - D_prop
-
-        return D_prop, d_x_loss, d_xg_loss, d_xi_loss
+        return d_xg_loss, d_xi_loss, d_x_loss, xg_loss
 
     
     def compute_gradients(self, x):
         with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
-            D_prop, d_x_loss, d_xg_loss, d_xi_loss = self.compute_loss(x)
+            d_xg_loss, d_xi_loss, d_x_loss, xg_loss = self.compute_loss(x)
 
-            gen_loss =  d_xi_loss  + d_xg_loss
-            disc_loss = d_x_loss - d_xi_loss*self.alpha
-        # balance learning rates
-        self.gen_optimizer.lr = (tf.constant(1.0) - D_prop)*self.lr
-        self.disc_optimizer.lr = D_prop*self.lr
+            gen_loss =  d_xg_loss + xg_loss + d_xi_loss*self.alpha
+            disc_loss = d_xg_loss + d_x_loss - d_xi_loss*self.alpha
 
         gen_gradients = gen_tape.gradient(
             gen_loss, self.enc.trainable_variables + self.dec.trainable_variables
@@ -104,7 +96,7 @@ class GAIA(tf.keras.Model):
          and the z representation of the batch as the interpolation
         """
         if self.chsq.df != z.shape[0]:
-            self.chsq = Chi2(df=z.shape[0])
+            self.chsq = Chi2(df=1/z.shape[0])
         ip = self.chsq.sample((z.shape[0], z.shape[0]))
         ip = ip / tf.reduce_sum(ip, axis=0)
         zi = tf.transpose(tf.tensordot(tf.transpose(z), ip, axes=1))

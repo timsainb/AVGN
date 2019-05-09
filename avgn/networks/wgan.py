@@ -47,14 +47,6 @@ class WGAN(tf.keras.Model):
         logits_x_gen = self.discriminate(x_gen)
         
         # gradient penalty
-        #epsilon = tf.random.uniform([x.shape[0], 1, 1, 1], 0.0, 1.0)
-        #x_hat = epsilon * x + (1 - epsilon) * x_gen
-        #with tf.GradientTape() as t:
-        #    t.watch(x_hat)
-        #    d_hat = self.discriminate(x_hat)
-        #gradients = t.gradient(d_hat, x_hat)
-        #ddx = tf.sqrt(tf.reduce_sum(gradients ** 2, axis=[1, 2]))
-        #d_regularizer = tf.reduce_mean((ddx - 1.0) ** 2)
         d_regularizer = self.gradient_penalty(x, x_gen)
         ### losses
         disc_loss = (tf.reduce_mean(logits_x) - tf.reduce_mean(logits_x_gen) + d_regularizer * self.gradient_penalty_weight)
