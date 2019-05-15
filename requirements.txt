@@ -7,6 +7,7 @@ pandas==0.22.0
 scikit_image==0.13.1
 librosa==0.6.0
 h5py==2.8.0
+hdbscan==0.8.18
 numpy==1.14.5
 lmfit==0.9.9
 seaborn==0.9.0
@@ -14,6 +15,8 @@ matplotlib==2.2.2
 ipython==7.0.1
 Pillow==5.3.0
 python-dotenv==0.9.1
-skimage==0.0
+scikit-image==0.13.1
 scikit_learn==0.20.0
 tensorflow==1.11.0
+umap-learn==0.3.7
+xlrd==1.1.0
