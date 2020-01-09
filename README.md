@@ -4,7 +4,7 @@ Animal Vocalization Generative Network (AVGN)
 
 Tim Sainburg (PhD student, UCSD, Gentner Laboratory)
 
-**This project is a work in progress, some features are not yet completed.**
+**There are two seperate repositories for AVGN: [this one](github.com/timsainb/avgn) that hosts an earlier and less feature rich, but cleaner version of this code, and the second one at [https://github.com/timsainb/avgn_paper](https://github.com/timsainb/avgn_paper). There are more species and examples in this repo, but its not as clean and might be a bit more difficult to figure out.** If you want to try out any of the features from [our paper](https://www.biorxiv.org/content/10.1101/870311v1.article-metrics), I would reccomend using the [second repository](https://github.com/timsainb/avgn_paper).
 
 This is a project for taking animal vocalization audio recordings, and learning a generative model of segments of those vocalizations (e.g. syllables) using modern machine learning techniques. Specifically. This package will take in a dataset of wav files, segment them into units (e.g. syllables of birdsong) and train a generative model on those segments. The learned latent representations can be used to cluster syllables in an unsupervised manner, generate novel syllables, visualize sequences, or perform several other analyses.
 
