@@ -2,7 +2,7 @@ tqdm==4.25.0
 scipy==1.0.0
 click==6.7
 tensorflow_gpu==1.8.0
-setuptools==39.0.1
+setuptools==65.5.1
 pandas==0.22.0
 scikit_image==0.13.1
 librosa==0.6.0
